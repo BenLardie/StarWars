@@ -8,15 +8,17 @@ import {
 } from "react-router-dom";
 import CharacterList from './Componets/CharacterList';
 
+
+
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/">
-          <CharacterList />
-        </Route>
-      </Switch>
-    </Router>
+      <Router>
+        <Switch>
+          <Route path="/">
+            <CharacterList />
+          </Route>
+        </Switch>
+      </Router>
   );
 }
 
