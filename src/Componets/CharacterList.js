@@ -1,20 +1,46 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchPeople } from '../actions/peopleActions'
 
 
 const CharacterList = () => {
 
-    async function getCharacters() {
-        const response = await fetch('https://swapi.co/api/people/');
-        const myJson = await response.json();
-        console.log(JSON.stringify(myJson));
-    }
+    const state = useSelector(state => state)
+    // const characterURL = useSelector(state => state.url)
+    const dispatch = useDispatch()
+    const [url, setUrl] = useState('https://swapi.co/api/people/');
 
-    useEffect(()=>{
-        getCharacters()
-    },[])
+    console.log(state)
+      useEffect(() => {
+        dispatch(fetchPeople(url));
+      }, []);
+
+
+    
+
+    useEffect(() => {
+        let newURL = JSON.stringify(state.people.next)
+        setUrl(newURL)
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+      }, []);
+    
+      function handleScroll() {
+        if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
+        dispatch(fetchPeople(url));
+      }
+console.log(url)
+    const display = state.people.people.map((character, i) => {
+        return (
+            <h1 key={i}>{character.name}</h1>
+        )
+    })
+   
 
     return (
-        <h1>Hello CharacterList</h1>
+        <>
+        {display}
+        </>
     )
 }
 
