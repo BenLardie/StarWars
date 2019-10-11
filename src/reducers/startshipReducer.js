@@ -1,14 +1,14 @@
 import {
-    FETCH_PEOPLE_BEGIN,
-    FETCH_PEOPLE_SUCCESS,
-    FETCH_PEOPLE_FAILURE
-} from "../actions/peopleActions";
+    FETCH_STARSHIPS_BEGIN,
+    FETCH_STARSHIPS_SUCCESS,
+    FETCH_STARSHIPS_FAILURE
+} from "../actions/starshipActions";
 
 const initialState = {
-    people: [],
+    starships: [],
     loading: false,
-    url: 'https://swapi.co/api/people/',
-    previous_url: 'https://swapi.co/api/people/?page=1', 
+    url: 'https://swapi.co/api/starships',
+    previous_url: null, 
     error: null
 };
 
@@ -17,7 +17,7 @@ export default function productReducer(
     action
 ) {
     switch (action.type) {
-        case FETCH_PEOPLE_BEGIN:
+        case FETCH_STARSHIPS_BEGIN:
             // Mark the state as "loading" so we can show a spinner or something
             // Also, reset any errors. We're starting fresh.
             return {
@@ -26,18 +26,18 @@ export default function productReducer(
                 error: null
             };
 
-        case FETCH_PEOPLE_SUCCESS:
+        case FETCH_STARSHIPS_SUCCESS:
             // All done: set loading "false".
             // Also, replace the people with the ones from the server
             return {
                 ...state,
                 loading: false,
-                people: [...state.people, ...action.payload.people.results],
-                url: action.payload.people.next,
-                previous_url: action.payload.people.previous,
+                starships: [...state.starships, ...action.payload.starships.results],
+                url: action.payload.starships.next,
+                previous_url: action.payload.starships.previous,
             };
 
-        case FETCH_PEOPLE_FAILURE:
+        case FETCH_STARSHIPS_FAILURE:
             // The request failed, but it did stop, so set loading to "false".
             // Save the error, and we can display it somewhere
             // Since it failed, we don't have people to display anymore, so set it empty.

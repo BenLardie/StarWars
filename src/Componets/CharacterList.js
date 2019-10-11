@@ -1,31 +1,35 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchPeople, fetchMorePeople } from '../actions/peopleActions'
+import { fetchPeople } from '../actions/peopleActions'
+import { fetchstarships } from '../actions/starshipActions'
 
 
 const CharacterList = () => {
 
     const people = useSelector(state => state.people.people)
-    const url = useSelector(state => state.people.url)
     const loading = useSelector(state => state.people.loading)
+    const starships = useSelector(state => state.starships.starships)
     const dispatch = useDispatch()
-    // const [url, setUrl] = useState('https://swapi.co/api/people/');
+    const table = document.getElementById('characters')
 
-
+    console.log(starships)
     useEffect(() => {
-        dispatch(fetchPeople());
+        dispatch(fetchPeople())
+        dispatch(fetchstarships())
     }, [dispatch]);
 
 
 
 
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+        const table = document.getElementById('characters')
+        console.log(table)
+        table.addEventListener('scroll', handleScroll);
+        return () => table.removeEventListener('scroll', handleScroll);
+    });
 
     function handleScroll() {
-        if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
+        if (table.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
         dispatch(fetchPeople());
     }
 
@@ -45,19 +49,13 @@ const CharacterList = () => {
         })
     }
 
-    // const renderTableHeader = () => {
-    //     let header = Object.keys(people[0])
-    //     return header.map((key, index) => {
-    //        return <th key={index}>{key.toUpperCase()}</th>
-    //     })
-    //  }
 
 
     return (
         <div>
             <h1 id='title'>Star Wars Characters</h1>
             {loading && <p>loading</p>}
-            <table id='students'>
+            <table id='characters'>
                 <tbody>
                     <tr>
                         <th key={2} >NAME</th>
