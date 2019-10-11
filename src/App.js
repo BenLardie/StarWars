@@ -6,14 +6,14 @@ import {
   Route
 } from "react-router-dom";
 import CharacterList from './Componets/CharacterList';
+import ViewDetails from './Componets/CharacterList'
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/">
-          <CharacterList />
-        </Route>
+        <Route exact path="/" component ={CharacterList} />
+        <Route path='viewdetails/:name' component={ViewDetails} />
       </Switch>
     </Router>
   );

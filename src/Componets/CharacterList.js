@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchPeople } from '../actions/peopleActions'
-import { fetchstarships } from '../actions/starshipActions'
+import { fetchStarships } from '../actions/starshipActions'
+import { Link } from 'react-router-dom'
 
 
 const CharacterList = () => {
@@ -15,7 +16,7 @@ const CharacterList = () => {
     console.log(starships)
     useEffect(() => {
         dispatch(fetchPeople())
-        dispatch(fetchstarships())
+        dispatch(fetchStarships())
     }, [dispatch]);
 
 
@@ -36,11 +37,18 @@ const CharacterList = () => {
 
     const renderTableData = () => {
         return people.map((character, index) => {
-            const { name, birth_year, height, mass } = character //destructuring
+            const { name, birth_year, height, mass, url } = character 
             return (
                 <tr key={index}>
                     <td>{index + 1}</td>
+                    <Link to={{
+                        pathname: `viewdetials/${name}`,
+                        state: {
+                            url: url
+                        }
+                    }}>
                     <td>{name}</td>
+                    </Link>
                     <td>{birth_year}</td>
                     <td>{height}</td>
                     <td>{mass}</td>

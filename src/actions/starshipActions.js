@@ -5,14 +5,13 @@ function getStarships(url) {
 }
 
 
-export function fetchstarships() {
+export function fetchStarships() {
     return (dispatch, getState) => {
         dispatch(fetchStarshipsBegin());
         const state = getState()
         const url = state.starships.url
         return getStarships(url)
             .then(json => {
-                console.log(json)
                 dispatch(fetchStarshipsSuccess(json));
                 return json;
             })

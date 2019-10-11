@@ -12,7 +12,6 @@ export function fetchPeople() {
         const url = state.people.url
         return getPeople(url)
             .then(json => {
-                console.log(json)
                 dispatch(fetchPeopleSuccess(json));
                 return json;
             })
