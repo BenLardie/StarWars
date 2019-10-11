@@ -26,14 +26,9 @@ const CharacterList = () => {
 
     function handleScroll() {
         if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
-        dispatch(fetchMorePeople());
+        dispatch(fetchPeople());
     }
-    console.log(url)
-    const display = people.map((character, i) => {
-        return (
-            <h1 key={i}>{character.name}</h1>
-        )
-    })
+
 
     const renderTableData = () => {
         return people.map((character, index) => {

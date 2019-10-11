@@ -28,7 +28,6 @@ export default function productReducer(
         case FETCH_PEOPLE_SUCCESS:
             // All done: set loading "false".
             // Also, replace the people with the ones from the server
-            console.log(action)
             return {
                 ...state,
                 loading: false,

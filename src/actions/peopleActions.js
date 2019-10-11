@@ -1,8 +1,8 @@
 // import store from '../store'
 // store.getState().otherReducer.url
 
-function getPeople() {
-    return fetch('https://swapi.co/api/people/')
+function getPeople(url) {
+    return fetch(url)
         .then(handleErrors)
         .then(res => res.json());
 }
@@ -12,15 +12,16 @@ function getMorePeople() {
     return fetch(`https://swapi.co/api/people/?page=${i}`)
         .then(handleErrors)
         .then(res => res.json());
-        
+    
 }
 
 export function fetchPeople() {
-    return dispatch => {
+    return (dispatch, getState) => {
         dispatch(fetchPeopleBegin());
-        return getPeople()
+        const state = getState()
+         const url = state.people.url
+        return getPeople(url)
             .then(json => {
-                console.log(json)
                 dispatch(fetchPeopleSuccess(json));
                 return json;
             })
