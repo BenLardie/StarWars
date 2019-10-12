@@ -13,7 +13,7 @@ const CharacterList = () => {
     const dispatch = useDispatch()
     const table = document.getElementById('characters')
 
-    console.log(starships)
+
     useEffect(() => {
         dispatch(fetchPeople())
         dispatch(fetchStarships())
@@ -24,7 +24,6 @@ const CharacterList = () => {
 
     useEffect(() => {
         const table = document.getElementById('characters')
-        console.log(table)
         table.addEventListener('scroll', handleScroll);
         return () => table.removeEventListener('scroll', handleScroll);
     });
@@ -37,18 +36,21 @@ const CharacterList = () => {
 
     const renderTableData = () => {
         return people.map((character, index) => {
+            console.log(character)
             const { name, birth_year, height, mass, url } = character 
             return (
                 <tr key={index}>
                     <td>{index + 1}</td>
+                    <td>
                     <Link to={{
-                        pathname: `viewdetials/${name}`,
+                        pathname: `/viewdetials/${name}`,
                         state: {
-                            url: url
+                            url: {url}
                         }
                     }}>
-                    <td>{name}</td>
+                    {name}
                     </Link>
+                    </td>
                     <td>{birth_year}</td>
                     <td>{height}</td>
                     <td>{mass}</td>
