@@ -8,9 +8,6 @@ import store from './store'
 
 
 
-//   const store = createStore(reducer, intialState,
-//     window.devToolsExtension && window.devToolsExtension() )
-
 ReactDOM.render(
     <Provider store={store}>
         <App />
