@@ -14,16 +14,16 @@ const CharacterList = () => {
 
     const people = useSelector(state => state.people.people)
     const loading = useSelector(state => state.people.loading)
+    const starshipLoading = useSelector(state => state.starships.loading)
     const starships = useSelector(state => state.starships.starships)
     const dispatch = useDispatch()
     const table = document.getElementById('characters')
 
 
     useEffect(() => {
-        dispatch(fetchPeople())
         dispatch(fetchStarships())
+        dispatch(fetchPeople())
     }, [dispatch]);
-
 
 
 
@@ -64,7 +64,39 @@ const CharacterList = () => {
         })
     }
 
+    const display = people.map((person, i = 0)=> {
+        if((i + 1) % 8 === 0){
+            const { name } = starships[i]
+            return (
+                <tr key ={i}>
+                    <td>{name}</td>
+                </tr>
+            )
+        } else {
+            const { name, birth_year, height, mass, url } = person
+            return (
+                <tr key={i}>
+                <td>{i + 1}</td>
+                <td>
+                <Link to={{
+                    pathname: `/viewdetials/${name}`,
+                    state: {
+                        url: {url}
+                    }
+                }}>
+                {name}
+                </Link>
+                </td>
+                <td>{birth_year}</td>
+                <td>{height}</td>
+                <td>{mass}</td>
+            </tr>
+            ) 
 
+        }
+    })
+
+    console.log(starships)
 
     return (
         <div>
@@ -78,7 +110,7 @@ const CharacterList = () => {
                         <th key={4} >HEIGHT</th>
                         <th key={5} >MASS</th>
                     </tr>
-                    {renderTableData()}
+                    {display}
                 </tbody>
             </table>
         </div>
