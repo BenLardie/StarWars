@@ -13,7 +13,6 @@ const CharacterList = () => {
     const people = useSelector(state => state.people.people)
     const loading = useSelector(state => state.people.loading)
     const url = useSelector(state => state.people.url)
-    const starshipLoading = useSelector(state => state.starships.loading)
     const starships = useSelector(state => state.starships.starships)
     const dispatch = useDispatch()
     const observer = useRef()
@@ -78,7 +77,7 @@ const CharacterList = () => {
                 <td>{mass}</td>
             </tr>
             ) } else {
-            const { name, birth_year, height, mass, url } = person
+            const { name, birth_year, height, mass} = person
             return (
                 <tr key={i}>
                 <td>{i + 1}</td>
@@ -86,7 +85,7 @@ const CharacterList = () => {
                 <Link to={{
                     pathname: `/viewdetials/${name}`,
                     state: {
-                        url: {url}
+                        characterData: person
                     }
                 }}>
                 {name}
