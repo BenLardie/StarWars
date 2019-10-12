@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
 
-const ViewDetails = (props) => {
+const ViewDetails = () => {
     const { name } = useParams()
     const { state } = useLocation()
     const [dataState, setDataState] = useState({})
 
-    useEffect(()=>{
-        let data = {}
-        let url = state.url.url
-        fetch(url)
-        .then(res => res.json() )
-        .then(res => {
-            data = res.data
-            setDataState(data)
-        })
-    },[])
+    async function getCharacter(url) {
+        let response = await fetch(url);
+        let data = await response.json()
+        return setDataState(data);
+
+      }
+      
+          useEffect(()=>{
+              getCharacter(state.url.url)
+          },[state])
     console.log(dataState)
 
     return (

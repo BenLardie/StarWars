@@ -4,6 +4,11 @@ import { fetchPeople } from '../actions/peopleActions'
 import { fetchStarships } from '../actions/starshipActions'
 import { Link } from 'react-router-dom'
 
+// TODO need every 8th restult to be starship
+// need an if statement if url is null dont fetch
+// need to work on infinity scroll and and if to that for loading so it doesnt fetch twice
+// style
+
 
 const CharacterList = () => {
 
