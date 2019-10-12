@@ -16,7 +16,6 @@ const CharacterList = () => {
     const starshipLoading = useSelector(state => state.starships.loading)
     const starships = useSelector(state => state.starships.starships)
     const dispatch = useDispatch()
-    const tableRef = useRef(null)
     const observer = useRef()
     
     const lastNameRow = useCallback(node => {
@@ -35,7 +34,8 @@ const CharacterList = () => {
         dispatch(fetchPeople())
         dispatch(fetchStarships())
     }, [dispatch]);
-
+    let x = -1
+    
     return (
         <div>
             <h1 id='title'>Star Wars Characters</h1>
@@ -47,11 +47,10 @@ const CharacterList = () => {
                         <th key={4} >HEIGHT</th>
                         <th key={5} >MASS</th>
                     </tr>
-                    {loading && <p>loading</p>}
+                    
                     { starships.length > 0 && people.length > 0 ? people.map((person, i = 0)=> {
-        let x = 0
-        x++
         if(i!== 0 && (i + 1) % 8 === 1){
+            x++
             const { name } = starships[x]
             return (
                 <tr key ={i}>
@@ -103,6 +102,7 @@ const CharacterList = () => {
     }) : null }
                 </tbody>
             </table>
+            {loading && <p>loading</p>}
         </div>
     )
 }
