@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,6 +6,7 @@ import {
 } from "react-router-dom";
 import CharacterList from './Componets/CharacterList';
 import ViewDetails from './Componets/ViewDetails'
+import SpaceshipDetails from './Componets/SpaceshipDetials';
 
 function App() {
   return (
@@ -17,6 +17,9 @@ function App() {
         </Route>
         <Route path="/viewdetials/:name">
           <ViewDetails />
+        </Route>
+        <Route path="/viewspaceship/:name">
+          <SpaceshipDetails />
         </Route>
       </Switch>
     </Router>

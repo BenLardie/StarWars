@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { fetchPeople } from '../actions/peopleActions'
 import { fetchStarships } from '../actions/starshipActions'
 import { Link } from 'react-router-dom'
+import yoda from '../Images/Yoda.png' 
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 
 // need an if statement if url is null dont fetch
 // style
@@ -30,6 +33,9 @@ const CharacterList = () => {
 
 
     useEffect(() => {
+        if(url === null){
+            return
+        }
         dispatch(fetchPeople())
         dispatch(fetchStarships())
     }, [dispatch]);
@@ -53,7 +59,17 @@ const CharacterList = () => {
             const { name } = starships[x]
             return (
                 <tr key ={i}>
-                    <td>{name}</td>
+                    <td>{i + 1}</td>
+                    <td>
+                    <Link to={{
+                    pathname: `/viewspaceship/${name}`,
+                    state: {
+                        spaceshipData: starships[x]
+                    }
+                }}>
+                        {name}
+                    </Link>
+                </td>
                 </tr>
             )
         }
@@ -66,7 +82,7 @@ const CharacterList = () => {
                 <Link to={{
                     pathname: `/viewdetials/${name}`,
                     state: {
-                        url: {url}
+                        characterData: person
                     }
                 }}>
                 {name}
@@ -101,7 +117,10 @@ const CharacterList = () => {
     }) : null }
                 </tbody>
             </table>
-            {loading && <p>loading</p>}
+            {loading && <>
+            <img src={yoda} alt='yoda' />
+            <p>loading</p>
+            </>}
         </div>
     )
 }
