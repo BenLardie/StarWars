@@ -4,9 +4,9 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import ViewDetails from './Componets/ViewDetails'
-import SpaceshipDetails from './Componets/SpaceshipDetials';
-import Home from './Componets/Home';
+import ViewDetails from './Components/ViewDetails'
+import SpaceshipDetails from './Components/SpaceshipDetails';
+import Home from './Components/Home';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/viewdetials/:name">
+        <Route path="/viewdetails/:name">
           <ViewDetails />
         </Route>
         <Route path="/viewspaceship/:name">

@@ -17,7 +17,7 @@ const TableRow = ({ person, index }, ref) => {
             <td>{index + 1}</td>
             <td>
                 <Link to={{
-                    pathname: `/viewdetials/${name}`,
+                    pathname: `/viewdetails/${name}`,
                     state: {
                         characterData: person
                     }
