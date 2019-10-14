@@ -1,9 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import renderer from 'react-test-renderer'
+import App from './App'
+import { Provider } from 'react-redux'
+import store from './store'
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+
+describe('Renders whole app with provider and compares it to a snapshot', () => {
+  test('snapshot renders', ()=>{
+    const component = renderer.create(
+    <Provider store={store}>
+      <App />
+    </Provider>)
+    let tree = component.toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+})
