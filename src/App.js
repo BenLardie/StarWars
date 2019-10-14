@@ -4,16 +4,16 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import CharacterList from './Componets/CharacterList';
 import ViewDetails from './Componets/ViewDetails'
 import SpaceshipDetails from './Componets/SpaceshipDetials';
+import Home from './Componets/Home';
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route exact path="/">
-          <CharacterList />
+          <Home />
         </Route>
         <Route path="/viewdetials/:name">
           <ViewDetails />

@@ -2,13 +2,12 @@ import React, { useEffect, useRef, useCallback  } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchPeople } from '../actions/peopleActions'
 import { fetchStarships } from '../actions/starshipActions'
-import { Link } from 'react-router-dom'
 import yoda from '../Images/Yoda.png' 
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import TableRow from './TableRow'
+import SpaceshipRow from './SpaceshipRow'
 
-// need an if statement if url is null dont fetch
-// style
 
 
 const CharacterList = () => {
@@ -42,11 +41,28 @@ const CharacterList = () => {
     let x = -1
     
     return (
-        <div>
-            <h1 id='title'>Star Wars Characters</h1>
-            <table id='characters'>
+        <>
+        <section css={{
+            overflow: 'scroll',
+            height: 400,
+            paddingTop: 10,
+        }}>
+            <table css={{
+            bordeSpacing: 1,
+            borderCollapse: 'collapse', 
+            background: 'white',
+            borderRadius: 6,
+            width: '75%',
+            margin: '0 auto',
+            scroll: 'smooth',
+            }}>
                 <tbody>
-                    <tr>
+                    <tr css={{
+                            height: 60,
+                            background: '#FFED86',
+                            fontSize: 16,
+                    }}>
+                        <th key={1} ></th>
                         <th key={2} >NAME</th>
                         <th key={3} >BIRTH YEAR</th>
                         <th key={4} >HEIGHT</th>
@@ -56,72 +72,29 @@ const CharacterList = () => {
                     { starships.length > 0 && people.length > 0 ? people.map((person, i = 0)=> {
         if(i!== 0 && (i + 1) % 8 === 1){
             x++
-            const { name } = starships[x]
-            return (
-                <tr key ={i}>
-                    <td>{i + 1}</td>
-                    <td>
-                    <Link to={{
-                    pathname: `/viewspaceship/${name}`,
-                    state: {
-                        spaceshipData: starships[x]
-                    }
-                }}>
-                        {name}
-                    </Link>
-                </td>
-                </tr>
-            )
+            return <SpaceshipRow spaceship={starships[x]} index={i} key={i} />
         }
         if(people.length === i + 1){
-            const { name, birth_year, height, mass, url } = person
-            return (
-                <tr key={i} ref={lastNameRow}>
-                <td>{i + 1}</td>
-                <td>
-                <Link to={{
-                    pathname: `/viewdetials/${name}`,
-                    state: {
-                        characterData: person
-                    }
-                }}>
-                {name}
-                </Link>
-                </td>
-                <td>{birth_year}</td>
-                <td>{height}</td>
-                <td>{mass}</td>
-            </tr>
-            ) } else {
-            const { name, birth_year, height, mass} = person
-            return (
-                <tr key={i}>
-                <td>{i + 1}</td>
-                <td>
-                <Link to={{
-                    pathname: `/viewdetials/${name}`,
-                    state: {
-                        characterData: person
-                    }
-                }}>
-                {name}
-                </Link>
-                </td>
-                <td>{birth_year}</td>
-                <td>{height}</td>
-                <td>{mass}</td>
-            </tr>
-            ) 
-
+            return <TableRow person={person} index={i} ref={lastNameRow} key={i} />
+            } else {
+            return <TableRow person={person} index={i} ref={null} key={i} />
         }
     }) : null }
-                </tbody>
+            </tbody>
             </table>
+            </section>
             {loading && <>
-            <img src={yoda} alt='yoda' />
-            <p>loading</p>
+            <img src={yoda} alt='yoda' css={{
+                width: '10%',
+                margin: '0 auto',
+                display: 'block',
+            }} />
+            <p css={{
+                textAlign: 'center',
+                color: 'white',
+            }}>loading your data is...</p>
             </>}
-        </div>
+        </>
     )
 }
 
