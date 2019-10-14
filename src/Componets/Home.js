@@ -1,7 +1,9 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import CharacterList from './CharacterList'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import Title from './Title'
 
 function Home() {
     return (
@@ -10,13 +12,9 @@ function Home() {
             height: 900,
             paddingTop: 10,
             backgroundSize: 'cover',
-            fontFamily: "'Rubik Mono One', sans-serif",
+            
         }}>
-        <h1 css={{
-            textAlign: 'center',
-            color: 'white',
-        }}
-        >BiteCine SWAPI Challenge</h1>
+        <Title text={'BitCine SWAPI Challenge'} />
         <CharacterList />
         </div>
     )

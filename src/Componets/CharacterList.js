@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useRef, useCallback  } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchPeople } from '../actions/peopleActions'
@@ -37,6 +38,7 @@ const CharacterList = () => {
         }
         dispatch(fetchPeople())
         dispatch(fetchStarships())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch]);
     let x = -1
     

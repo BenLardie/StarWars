@@ -1,9 +1,11 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import characterBackground from '../Images/character-background.jpg'
 
 /** @jsx jsx */
 import { jsx, Global, css } from '@emotion/core'
+import Title from './Title'
 
 const ViewDetails = () => {
     const { state } = useLocation()
@@ -31,13 +33,6 @@ const ViewDetails = () => {
         }}>
             <Global
                 styles={css`
-            h1{
-                color: white;
-                font-family: 'Rubik Mono One', sans-serif;
-                text-align: center;
-                -webkit-text-stroke-: 2px black;
-                font-size: 50;
-                }
             h2 {
                 color: white;
                 font-family: 'Fjalla One', sans-serif;
@@ -53,7 +48,7 @@ const ViewDetails = () => {
                 padding: 10px;
             }
         `} />
-            <h1>{name}</h1>
+            <Title text={name} />
             <div className= 'data'>
                 <h2>Birth Year</h2>
                     <p>{birth_year}</p>

@@ -1,11 +1,12 @@
 /** @jsx jsx */
 import { jsx, Global, css } from '@emotion/core'
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import { useLocation } from 'react-router-dom'
+import Title from './Title'
 
 const SpaceshipDetails = () => {
     const { state } = useLocation()
-    console.log(state.starshipData)
     const { name, model, manufacturer, cost_in_credits, max_atmosphering_speed, starship_class } = state.spaceshipData
 
     return (
@@ -18,13 +19,6 @@ const SpaceshipDetails = () => {
         }}>
             <Global
                 styles={css`
-            h1 {
-                    color: white;
-                    font-family: 'Rubik Mono One', sans-serif;
-                    text-align: center;
-                    -webkit-text-stroke-: 2px black;
-                    font-size: 50;
-                }
             h2 {
                 color: white;
                 font-family: 'Fjalla One', sans-serif;
@@ -40,7 +34,7 @@ const SpaceshipDetails = () => {
                 padding: 10px;
             }
         `} />
-            <h1>{name}</h1>
+            <Title text={name} />
             <div className= 'data'>
             <h2>Model</h2>
                     <p>{model}</p>
