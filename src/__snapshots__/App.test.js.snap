@@ -1,91 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home snapshot renders 1`] = `
-<div
-  className="css-jqqm4l-Home"
->
-  <h1
-    className="css-1umvxn8-Home"
-  >
-    BiteCine SWAPI Challenge
-  </h1>
-  <section
-    className="css-5l9xtq-CharacterList"
-  >
-    <table
-      className="css-1ktkhbs-CharacterList"
-    >
-      <tbody>
-        <tr
-          className="css-1l1d4v6-CharacterList"
-        >
-          <th />
-          <th>
-            NAME
-          </th>
-          <th>
-            BIRTH YEAR
-          </th>
-          <th>
-            HEIGHT
-          </th>
-          <th>
-            MASS
-          </th>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-</div>
-`;
-
-exports[`Renders whole app with pro snapshot renders 1`] = `
-<div
-  className="css-jqqm4l-Home"
->
-  <h1
-    className="css-1umvxn8-Home"
-  >
-    BiteCine SWAPI Challenge
-  </h1>
-  <section
-    className="css-5l9xtq-CharacterList"
-  >
-    <table
-      className="css-1ktkhbs-CharacterList"
-    >
-      <tbody>
-        <tr
-          className="css-1l1d4v6-CharacterList"
-        >
-          <th />
-          <th>
-            NAME
-          </th>
-          <th>
-            BIRTH YEAR
-          </th>
-          <th>
-            HEIGHT
-          </th>
-          <th>
-            MASS
-          </th>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-</div>
-`;
-
 exports[`Renders whole app with provider and compares it to a snapshot snapshot renders 1`] = `
 <div
-  className="css-jqqm4l-Home"
+  className="css-17ykx3g-Home"
 >
   <h1
-    className="css-1umvxn8-Home"
+    className="css-1iwaw1b-Title"
   >
-    BiteCine SWAPI Challenge
+    BitCine SWAPI Challenge
   </h1>
   <section
     className="css-5l9xtq-CharacterList"
@@ -117,41 +39,10 @@ exports[`Renders whole app with provider and compares it to a snapshot snapshot 
 </div>
 `;
 
-exports[`snapshot renders 1`] = `
-<div
-  className="css-jqqm4l-Home"
+exports[`Title Snapshot test snapshot renders 1`] = `
+<h1
+  className="css-1iwaw1b-Title"
 >
-  <h1
-    className="css-1umvxn8-Home"
-  >
-    BiteCine SWAPI Challenge
-  </h1>
-  <section
-    className="css-5l9xtq-CharacterList"
-  >
-    <table
-      className="css-1ktkhbs-CharacterList"
-    >
-      <tbody>
-        <tr
-          className="css-1l1d4v6-CharacterList"
-        >
-          <th />
-          <th>
-            NAME
-          </th>
-          <th>
-            BIRTH YEAR
-          </th>
-          <th>
-            HEIGHT
-          </th>
-          <th>
-            MASS
-          </th>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-</div>
+  test
+</h1>
 `;
