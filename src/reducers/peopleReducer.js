@@ -7,8 +7,8 @@ import {
 const initialState = {
     people: [],
     loading: false,
-    url: 'https://swapi.co/api/people/',
-    previous_url: 'https://swapi.co/api/people/?page=1', 
+    url: 'https://swapi.dev/api/people/',
+    previous_url: 'https://swapi.co/api/people/1', 
     error: null
 };
 

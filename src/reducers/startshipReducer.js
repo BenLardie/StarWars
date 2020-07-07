@@ -7,7 +7,7 @@ import {
 const initialState = {
     starships: [],
     loading: false,
-    url: 'https://swapi.co/api/starships',
+    url: 'https://swapi.dev/api/starships',
     previous_url: null, 
     error: null
 };
